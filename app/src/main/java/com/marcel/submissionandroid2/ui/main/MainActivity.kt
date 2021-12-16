@@ -7,11 +7,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.gson.Gson
 import com.marcel.submissionandroid2.R
 import com.marcel.submissionandroid2.databinding.ActivityMainBinding
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             binding.rvListUsers.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             binding.rvListUsers.adapter = adapter
         })
+
     }
 
 
@@ -64,9 +67,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val switchTheme = findViewById<SwitchMaterial>(R.id.menu1)
         when (item.itemId) {
             R.id.menu1 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+                    if (isChecked) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        switchTheme.isChecked = true
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        switchTheme.isChecked = false
+                    }
+                }
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 return true
             }
             R.id.menu2 -> {
