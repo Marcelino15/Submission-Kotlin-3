@@ -1,4 +1,4 @@
-package com.marcel.submissionandroid2
+package com.marcel.submissionandroid2.ui.following
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.marcel.submissionandroid2.FollowingResponseItem
+import com.marcel.submissionandroid2.R
 
 class FollowingAdapter(private val listFollowing: List<FollowingResponseItem>, private val context: FollowingFragment) : RecyclerView.Adapter<FollowingAdapter.ViewHolder>() {
 

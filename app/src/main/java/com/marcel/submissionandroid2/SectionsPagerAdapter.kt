@@ -3,6 +3,8 @@ package com.marcel.submissionandroid2
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.marcel.submissionandroid2.ui.followers.FollowersFragment
+import com.marcel.submissionandroid2.ui.following.FollowingFragment
 
 class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 

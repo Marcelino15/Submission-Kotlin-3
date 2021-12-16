@@ -1,4 +1,4 @@
-package com.marcel.submissionandroid2
+package com.marcel.submissionandroid2.ui.followers
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.marcel.submissionandroid2.FollowersResponseItem
+import com.marcel.submissionandroid2.R
 
 class FollowersAdapter(private val listFollowers: List<FollowersResponseItem>, private val context: FollowersFragment) : RecyclerView.Adapter<FollowersAdapter.ViewHolder>() {
 

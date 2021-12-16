@@ -33,13 +33,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_toEndOf="@id/img_fav_photo"
             android:gravity="center"
-            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/tv_fav_del"
             card_view:layout_constraintStart_toEndOf="@id/img_fav_photo"
             card_view:layout_constraintTop_toTopOf="@id/img_fav_photo"
-            tools:text="@string/nama_user"/>
+            tools:text="@string/nama_user" />
+
+        <ImageView
+            android:id="@+id/tv_fav_del"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_close"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_detail_fav"
@@ -48,12 +55,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:layout_toEndOf="@id/img_fav_photo"
             android:text="@string/detail"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@id/img_fav_photo"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_fav_username" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

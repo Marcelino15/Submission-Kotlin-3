@@ -1,4 +1,4 @@
-package com.marcel.submissionandroid2
+package com.marcel.submissionandroid2.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.marcel.submissionandroid2.ItemsItem
+import com.marcel.submissionandroid2.R
 import com.marcel.submissionandroid2.ui.detail.DetailActivity
 
 class SearchUserAdapter(private val listUserSearch: List<ItemsItem>, private val context: Context) : RecyclerView.Adapter<SearchUserAdapter.ViewHolder>() {

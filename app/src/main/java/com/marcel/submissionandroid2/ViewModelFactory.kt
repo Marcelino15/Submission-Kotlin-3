@@ -3,7 +3,6 @@ package com.marcel.submissionandroid2
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.marcel.submissionandroid2.ui.favorite.FavoriteViewModel
 import com.marcel.submissionandroid2.ui.insert.UserAddViewModel
 import com.marcel.submissionandroid2.ui.main.MainViewModel
 
@@ -28,7 +27,7 @@ class ViewModelFactory private constructor(private val mApplication: Application
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return FavoriteViewModel(mApplication) as T
+            return UserAddViewModel(mApplication) as T
         } else if (modelClass.isAssignableFrom(UserAddViewModel::class.java)) {
             return UserAddViewModel(mApplication) as T
         }

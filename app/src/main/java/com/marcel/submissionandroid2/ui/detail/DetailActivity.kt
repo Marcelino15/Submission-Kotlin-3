@@ -1,8 +1,8 @@
 package com.marcel.submissionandroid2.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,15 +10,22 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 import com.marcel.submissionandroid2.R
 import com.marcel.submissionandroid2.SectionsPagerAdapter
+import com.marcel.submissionandroid2.ViewModelFactory
+import com.marcel.submissionandroid2.database.User
 import com.marcel.submissionandroid2.databinding.ActivityDetailBinding
+import com.marcel.submissionandroid2.helper.DateHelper
+import com.marcel.submissionandroid2.ui.insert.UserAddViewModel
 import com.marcel.submissionandroid2.ui.main.MainViewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var viewModel: MainViewModel
+    private lateinit var userAddViewModel: UserAddViewModel
+    private var user = User()
 
     companion object {
         @StringRes
@@ -67,9 +74,19 @@ class DetailActivity : AppCompatActivity() {
             binding.tvDetailLocation.text = list.location
         })
 
+        userAddViewModel = obtainViewModel(this@DetailActivity)
+
         binding?.fabAdd?.setOnClickListener {
             viewModel.detailUser.observe(this,{ list ->
-                Log.d("detail_user", list.name)
+                println("Detail user : ${Gson().toJson(list)}")
+                //Log.d("detail_user", list.name)
+                user.id = list.id
+                user.login = list.login
+                user.avatar_url = list.avatarUrl
+                user.date = DateHelper.getCurrentDate()
+                userAddViewModel.insert(user as User)
+                showToast(getString(R.string.added))
+                finish()
             })
 
         }
@@ -77,5 +94,14 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean){
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): UserAddViewModel{
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(UserAddViewModel::class.java)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

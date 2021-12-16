@@ -6,5 +6,9 @@
             android:title="@string/menu_1"
             android:icon="@drawable/ic_baseline_settings_24"
             app:showAsAction="always"/>
+        <item android:id="@+id/menu2"
+            android:title="@string/menu_2"
+            android:icon="@drawable/ic_favorite"
+            app:showAsAction="always"/>
     </group>
 </menu>

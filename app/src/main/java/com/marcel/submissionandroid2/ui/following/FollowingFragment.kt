@@ -1,4 +1,4 @@
-package com.marcel.submissionandroid2
+package com.marcel.submissionandroid2.ui.following
 
 import android.os.Bundle
 import android.view.LayoutInflater
