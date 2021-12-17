@@ -40,18 +40,6 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this)
-
-        val viewPager: ViewPager2 = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
-
-        val tabs: TabLayout = binding.tabs
-
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
-        supportActionBar?.elevation = 0f
-
         setTitle("Detail User")
 
         val login = intent.getStringExtra("data");
@@ -72,6 +60,18 @@ class DetailActivity : AppCompatActivity() {
             binding.tvDetailName.text = list.name
             binding.tvDetailCompany.text = list.company
             binding.tvDetailLocation.text = list.location
+
+            val sectionsPagerAdapter = SectionsPagerAdapter(this)
+
+            val viewPager: ViewPager2 = binding.viewPager
+            viewPager.adapter = sectionsPagerAdapter
+
+            val tabs: TabLayout = binding.tabs
+
+            TabLayoutMediator(tabs, viewPager) { tab, position ->
+                tab.text = resources.getString(TAB_TITLES[position])
+            }.attach()
+            supportActionBar?.elevation = 0f
         })
 
         userAddViewModel = obtainViewModel(this@DetailActivity)
