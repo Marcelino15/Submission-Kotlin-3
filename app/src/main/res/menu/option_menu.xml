@@ -4,11 +4,14 @@
     <group android:menuCategory="container">
         <item android:id="@+id/menu1"
             android:title="@string/menu_1"
-            android:icon="@drawable/ic_baseline_settings_24"
-            app:showAsAction="always"
-            android:actionLayout="@layout/switch_layout"/>
+            android:icon="@drawable/ic_light"
+            app:showAsAction="always" />
         <item android:id="@+id/menu2"
             android:title="@string/menu_2"
+            android:icon="@drawable/ic_dark"
+            app:showAsAction="always" />
+        <item android:id="@+id/menu3"
+            android:title="@string/menu_3"
             android:icon="@drawable/ic_favorite"
             app:showAsAction="always"/>
     </group>

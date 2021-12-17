@@ -8,8 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +22,17 @@ import com.marcel.submissionandroid2.R
 import com.marcel.submissionandroid2.databinding.ActivityMainBinding
 import com.marcel.submissionandroid2.repository.UserRepository
 import com.marcel.submissionandroid2.ui.favorite.FavoriteActivity
+import androidx.datastore.preferences.core.Preferences
+import com.marcel.submissionandroid2.SettingPreferences
+import com.marcel.submissionandroid2.ThemeViewModel
+import com.marcel.submissionandroid2.ViewModelFactory2
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
+    var isSwitch:Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +66,18 @@ class MainActivity : AppCompatActivity() {
             binding.rvListUsers.adapter = adapter
         })
 
+        val pref = SettingPreferences.getInstance(dataStore)
+        val themeViewModel = ViewModelProvider(this, ViewModelFactory2(pref)).get( ThemeViewModel::class.java)
+        themeViewModel.getThemeSettings().observe(this,
+            { isDarkModeActive: Boolean ->
+                if (isDarkModeActive) {
+                    isSwitch = true
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    isSwitch = false
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            })
     }
 
 
@@ -67,22 +88,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val switchTheme = findViewById<SwitchMaterial>(R.id.menu1)
+        val pref = SettingPreferences.getInstance(dataStore)
+        val themeViewModel = ViewModelProvider(this, ViewModelFactory2(pref)).get( ThemeViewModel::class.java)
         when (item.itemId) {
             R.id.menu1 -> {
-                switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-                    if (isChecked) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        switchTheme.isChecked = true
-                    } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        switchTheme.isChecked = false
-                    }
-                }
+
+                    themeViewModel.saveThemeSetting(true)
+
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 return true
             }
             R.id.menu2 -> {
+
+                    themeViewModel.saveThemeSetting(false)
+
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                return true
+            }
+            R.id.menu3 -> {
                 val i = Intent(this, FavoriteActivity::class.java)
                 startActivity(i)
                 return true
