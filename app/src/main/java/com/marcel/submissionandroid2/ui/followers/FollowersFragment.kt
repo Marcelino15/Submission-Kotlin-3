@@ -30,6 +30,10 @@ class FollowersFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        viewModel.isLoading2.observe(this,{
+            showLoading(it)
+        })
+
         viewModel.listUserFollowers(username.toString())
 
         viewModel.listUserFollowers.observe(viewLifecycleOwner,{ list->
@@ -37,6 +41,10 @@ class FollowersFragment : Fragment() {
             binding.rvListFollower.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
             binding.rvListFollower.adapter = adapter
         })
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }

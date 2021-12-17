@@ -7,8 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.CompoundButton
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
@@ -16,7 +14,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.gson.Gson
 import com.marcel.submissionandroid2.R
 import com.marcel.submissionandroid2.databinding.ActivityMainBinding

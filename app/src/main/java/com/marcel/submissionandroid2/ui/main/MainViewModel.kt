@@ -29,6 +29,9 @@ class MainViewModel : ViewModel() {
     private val _isloading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isloading
 
+    private val _isloading2 = MutableLiveData<Boolean>()
+    val isLoading2: LiveData<Boolean> = _isloading2
+
     companion object {
         private const val TOKEN = "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"
     }
@@ -104,7 +107,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun listUserFollowers(username: String){
-        _isloading.value = true
+        _isloading2.value = true
         val client = ApiConfig.getApiService().findUserDetailFollower(username, TOKEN)
         client.enqueue(object  : Callback<List<FollowersResponseItem>>{
             override fun onResponse(
@@ -112,7 +115,7 @@ class MainViewModel : ViewModel() {
                 response: Response<List<FollowersResponseItem>>
             ) {
                if(response.isSuccessful){
-                   _isloading.value = false
+                   _isloading2.value = false
                    _listUserFollowers.value = response.body()
                    Log.d("hasil",response.body().toString())
                } else {
@@ -121,7 +124,7 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<FollowersResponseItem>>, t: Throwable) {
-                _isloading.value = false
+                _isloading2.value = false
                 Log.d(TAG, "onFailure : ${t.message.toString()}")
             }
 
