@@ -33,9 +33,6 @@ class MainViewModel : ViewModel() {
         private const val TOKEN = "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"
     }
 
-//    private val mUserRepository: UserRepository = UserRepository(application)
-
-//    fun getAllUsers(): LiveData<List<User>> = mUserRepository.getAllUsers()
 
     fun getUserGithub(username: String?){
         _isloading.value = true
