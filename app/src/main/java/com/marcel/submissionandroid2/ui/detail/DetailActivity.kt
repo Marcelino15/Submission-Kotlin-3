@@ -58,6 +58,7 @@ class DetailActivity : AppCompatActivity() {
                 .circleCrop()
                 .into(binding.imgDetailPhoto)
             binding.tvDetailName.text = list.name
+            binding.tvDetailUserName.text = list.login
             binding.tvDetailCompany.text = list.company
             binding.tvDetailLocation.text = list.location
 
