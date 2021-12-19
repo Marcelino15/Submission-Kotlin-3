@@ -17,7 +17,8 @@
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/activity_favorite.xml" value="0.13272543059777103" />
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/activity_main.xml" value="0.129981884057971" />
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/activity_user_fav_add.xml" value="0.25271739130434784" />
-        <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/fragment_follower.xml" value="0.13272543059777103" />
+        <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/fragment_follower.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/fragment_following.xml" value="0.25" />
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/item_favorite_user.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/item_follower.xml" value="0.13272543059777103" />
         <entry key="..\:/Users/Lisa/AndroidStudioProjects/SubmissionAndroid3/app/src/main/res/layout/item_row_user.xml" value="0.20153985507246377" />

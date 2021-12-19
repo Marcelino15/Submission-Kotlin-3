@@ -10,19 +10,19 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.marcel.submissionandroid2.R
-import com.marcel.submissionandroid2.databinding.ActivityMainBinding
-import com.marcel.submissionandroid2.repository.UserRepository
-import com.marcel.submissionandroid2.ui.favorite.FavoriteActivity
-import androidx.datastore.preferences.core.Preferences
 import com.marcel.submissionandroid2.SettingPreferences
 import com.marcel.submissionandroid2.ThemeViewModel
 import com.marcel.submissionandroid2.ViewModelFactory2
+import com.marcel.submissionandroid2.databinding.ActivityMainBinding
+import com.marcel.submissionandroid2.repository.UserRepository
+import com.marcel.submissionandroid2.ui.favorite.FavoriteActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class MainActivity : AppCompatActivity() {
@@ -89,17 +89,11 @@ class MainActivity : AppCompatActivity() {
         val themeViewModel = ViewModelProvider(this, ViewModelFactory2(pref)).get( ThemeViewModel::class.java)
         when (item.itemId) {
             R.id.menu1 -> {
-
-                    themeViewModel.saveThemeSetting(true)
-
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                themeViewModel.saveThemeSetting(false)
                 return true
             }
             R.id.menu2 -> {
-
-                    themeViewModel.saveThemeSetting(false)
-
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                themeViewModel.saveThemeSetting(true)
                 return true
             }
             R.id.menu3 -> {
