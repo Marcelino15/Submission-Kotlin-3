@@ -41,6 +41,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setTitle("Detail User")
+        supportActionBar?.hide()
 
         val login = intent.getStringExtra("data");
 

@@ -15,6 +15,7 @@
             android:name=".ui.favorite.FavoriteActivity"
             android:exported="false" />
         <activity
+
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
